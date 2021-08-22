@@ -1,0 +1,99 @@
+# -*- coding: utf-8 -*-
+import requests
+import re
+import sys
+import json
+from bs4 import BeautifulSoup as bs
+
+
+class order:
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        self.headers = {
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Cookie': 'language=zh-tw; currency=NT%24; hid=481; cookiekey=0',
+            'Host': 'www.360pms.com',
+            'Referer': 'https://www.360pms.com/Order/allorder/',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73'
+        }
+
+
+    def order_data(self, fromdate, enddate, page_number = '1', keywords = ''):
+        headers = self.headers
+
+        payload = {
+            'username': '0922013171',
+            'password': 'Hezrid56610'
+        }
+
+        # login
+        session = requests.Session()
+        session.post('https://www.360pms.com/Login/index', data=payload, headers=headers)
+
+        # update cookie
+        headers['Cookie'] = 'language=zh-tw; currency=NT%24; hid=481; cookiekey=5ca7cc0e6a43da9887282f2fd36b7c5d'
+        headers['Referer'] = 'https://www.360pms.com/book/index.html'
+
+        # 參數
+        url_query = f"?datetype=1&channel=allchannel&status=allstatus&fromdate={fromdate}&enddate={enddate}&keywords={keywords}&p={page_number}"
+
+        goto_next = True
+        page_number = 1
+
+        result = []
+        while page_number < 6:
+            response = session.get('https://www.360pms.com/Order/allorder' + url_query + f'&p={page_number}',
+                                   headers=headers)
+            soup = bs(response.text, 'html.parser')
+
+            rows = soup.find('table', 'table').tbody.find_all('tr')
+
+            for row in rows:
+                all_tds = row.find_all('td')
+                if len(all_tds) == 8:
+                    tds = str(all_tds[7])
+                    oid = re.search('oid="[0-9]+"', tds).group()
+                    oid_result = re.search('[0-9]+', oid).group()
+                    rid = re.search('rid="[0-9]+"', tds).group()
+                    rid_result = re.search('[0-9]+', rid).group()
+
+                    payload = {
+                        'orderid': oid_result,
+                        'roomid': rid_result
+                    }
+                    response = session.post('https://www.360pms.com/Book/checkindetail?t=202', data=payload, headers=headers)
+                    # print(json.loads(response.text))
+                    res = json.loads(response.text)
+                    result.append(res['orderdata'])
+
+                elif len(all_tds) == 4:
+                    tds = str(all_tds[3])
+                    oid = re.search('oid="[0-9]+"', tds).group()
+                    oid_result = re.search('[0-9]+', oid).group()
+                    rid = re.search('rid="[0-9]+"', tds).group()
+                    rid_result = re.search('[0-9]+', rid).group()
+
+                    payload = {
+                        'orderid': oid_result,
+                        'roomid': rid_result
+                    }
+                    response = session.post('https://www.360pms.com/Book/checkindetail?t=202', data=payload, headers=headers)
+                    res = json.loads(response.text)
+                    result.append(res['orderdata'])
+
+
+            current_page = soup.select_one("#pages > div > span").text
+            if current_page is None:
+                break
+
+            print(page_number)
+            page_number += 1
+
+
+        return result
+
+
+order = order('0985167989admin', '167989')
+print(order.order_data('2021-06-01', '2021-08-31'))
