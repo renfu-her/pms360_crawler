@@ -3,6 +3,8 @@ import requests
 import re
 import sys
 import json
+
+import username as username
 from bs4 import BeautifulSoup as bs
 
 
@@ -13,7 +15,7 @@ class order:
         self.password = password
         self.headers = {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'Cookie': 'language=zh-tw; currency=NT%24; hid=481; cookiekey=0',
+            'Cookie': 'language=zh-tw; currency=NT%24; hid=3546; cookiekey=0',
             'Host': 'www.360pms.com',
             'Referer': 'https://www.360pms.com/Order/allorder/',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73'
@@ -24,8 +26,8 @@ class order:
         headers = self.headers
 
         payload = {
-            'username': '0922013171',
-            'password': 'Hezrid56610'
+            'username': self.username,
+            'password': self.password
         }
 
         # login
@@ -33,7 +35,7 @@ class order:
         session.post('https://www.360pms.com/Login/index', data=payload, headers=headers)
 
         # update cookie
-        headers['Cookie'] = 'language=zh-tw; currency=NT%24; hid=481; cookiekey=5ca7cc0e6a43da9887282f2fd36b7c5d'
+        headers['Cookie'] = 'language=zh-tw; currency=NT%24; hid=3546; cookiekey=9777809faa558519127835b25a5e0505'
         headers['Referer'] = 'https://www.360pms.com/book/index.html'
 
         # 參數
@@ -43,7 +45,7 @@ class order:
         page_number = 1
 
         result = []
-        while page_number < 6:
+        while page_number > 0:
             response = session.get('https://www.360pms.com/Order/allorder' + url_query + f'&p={page_number}',
                                    headers=headers)
             soup = bs(response.text, 'html.parser')
@@ -84,13 +86,19 @@ class order:
 
             # 分頁處理
             current_page = soup.select_one("#pages > div > span")
+            print(current_page)
             if current_page is None:
                 break
+            else:
+                # 下一頁
+                next_page = soup.select_one("#pages > div > a:nth-child(3)")
+                if next_page is None:
+                    break
 
             page_number += 1
 
         return result
 
 
-order = order('0922013171', 'Hezrid5')
-print(order.order_data(fromdate='2021-06-01', enddate='2021-08-31', keywords='test'))
+order = order('0985167989admin', '167989')
+print(order.order_data(fromdate='2021-06-01', enddate='2021-08-31'))
