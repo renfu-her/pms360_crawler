@@ -11,12 +11,12 @@
 order = order('0922013171', 'Hezrid5')
 
 # 呈現 2021-01-01 ~ 2021-08-31 的訂單
-print(order.order_data('2021-01-01', '2021-08-31'))
+print(order.order_data(fromdate='2021-06-01', enddate='2021-08-31'))
 ```
 
 想要的這裏也可以增加關鍵字的方式搜尋
 ```
-
+print(order.order_data(fromdate='2021-06-01', enddate='2021-08-31', keywords='test'))
 ```
 
 ## changelog
