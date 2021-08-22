@@ -21,7 +21,6 @@ class order:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73'
         }
 
-
     def order_data(self, fromdate, enddate, keywords = ''):
         headers = self.headers
 
@@ -45,13 +44,14 @@ class order:
         page_number = 1
 
         result = []
-        while page_number > 0:
+        while page_number < 100:
             response = session.get('https://www.360pms.com/Order/allorder' + url_query + f'&p={page_number}',
                                    headers=headers)
             soup = bs(response.text, 'html.parser')
 
             rows = soup.find('table', 'table').tbody.find_all('tr')
 
+            page_max = 0
             for row in rows:
                 all_tds = row.find_all('td')
                 oid = ''
@@ -60,6 +60,7 @@ class order:
                 rid_result = ''
 
                 if len(all_tds) == 8:
+                    page_max += 1
                     tds = str(all_tds[7])
                     # 以下采用 regex 的方法
                     oid = re.search('oid="[0-9]+"', tds).group()
@@ -68,6 +69,7 @@ class order:
                     rid_result = re.search('[0-9]+', rid).group()
 
                 elif len(all_tds) == 4:
+                    page_max += 1
                     tds = str(all_tds[3])
                     oid = re.search('oid="[0-9]+"', tds).group()
                     oid_result = re.search('[0-9]+', oid).group()
@@ -84,16 +86,8 @@ class order:
                     res = json.loads(response.text)
                     result.append(res['orderdata'])
 
-            # 分頁處理
-            current_page = soup.select_one("#pages > div > span")
-            print(current_page)
-            if current_page is None:
+            if page_max < 30:
                 break
-            else:
-                # 下一頁
-                next_page = soup.select_one("#pages > div > a:nth-child(3)")
-                if next_page is None:
-                    break
 
             page_number += 1
 
@@ -101,4 +95,4 @@ class order:
 
 
 order = order('0985167989admin', '167989')
-print(order.order_data(fromdate='2021-06-01', enddate='2021-08-31'))
+print(order.order_data(fromdate='2021-01-01', enddate='2021-08-31'))
