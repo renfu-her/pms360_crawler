@@ -20,7 +20,7 @@ class order:
         }
 
 
-    def order_data(self, fromdate, enddate, page_number = '1', keywords = ''):
+    def order_data(self, fromdate, enddate, keywords = ''):
         headers = self.headers
 
         payload = {
@@ -37,7 +37,7 @@ class order:
         headers['Referer'] = 'https://www.360pms.com/book/index.html'
 
         # 參數
-        url_query = f"?datetype=1&channel=allchannel&status=allstatus&fromdate={fromdate}&enddate={enddate}&keywords={keywords}&p={page_number}"
+        url_query = f"?datetype=1&channel=allchannel&status=allstatus&fromdate={fromdate}&enddate={enddate}&keywords={keywords}"
 
         goto_next = True
         page_number = 1
@@ -52,13 +52,27 @@ class order:
 
             for row in rows:
                 all_tds = row.find_all('td')
+                oid = ''
+                rid = ''
+                oid_result = ''
+                rid_result = ''
+
                 if len(all_tds) == 8:
                     tds = str(all_tds[7])
+                    # 以下采用 regex 的方法
                     oid = re.search('oid="[0-9]+"', tds).group()
                     oid_result = re.search('[0-9]+', oid).group()
                     rid = re.search('rid="[0-9]+"', tds).group()
                     rid_result = re.search('[0-9]+', rid).group()
 
+                elif len(all_tds) == 4:
+                    tds = str(all_tds[3])
+                    oid = re.search('oid="[0-9]+"', tds).group()
+                    oid_result = re.search('[0-9]+', oid).group()
+                    rid = re.search('rid="[0-9]+"', tds).group()
+                    rid_result = re.search('[0-9]+', rid).group()
+
+                if oid != '':
                     payload = {
                         'orderid': oid_result,
                         'roomid': rid_result
@@ -68,29 +82,12 @@ class order:
                     res = json.loads(response.text)
                     result.append(res['orderdata'])
 
-                elif len(all_tds) == 4:
-                    tds = str(all_tds[3])
-                    oid = re.search('oid="[0-9]+"', tds).group()
-                    oid_result = re.search('[0-9]+', oid).group()
-                    rid = re.search('rid="[0-9]+"', tds).group()
-                    rid_result = re.search('[0-9]+', rid).group()
-
-                    payload = {
-                        'orderid': oid_result,
-                        'roomid': rid_result
-                    }
-                    response = session.post('https://www.360pms.com/Book/checkindetail?t=202', data=payload, headers=headers)
-                    res = json.loads(response.text)
-                    result.append(res['orderdata'])
-
-
-            current_page = soup.select_one("#pages > div > span").text
+            # 分頁處理
+            current_page = soup.select_one("#pages > div > span")
             if current_page is None:
                 break
 
-            print(page_number)
             page_number += 1
-
 
         return result
 
