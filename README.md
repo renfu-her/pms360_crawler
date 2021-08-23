@@ -21,8 +21,8 @@
 
 用 order class 建立起來
 ```
-# 登入系統
-order = order('0922013171', 'Hezrid5')
+# 直接使用 cookle 就可以進入使用了
+order = order(hid='7202', cookiekey='5ca7cc0e6a43da9887282f2fd36b7c5d')
 
 # 呈現 2021-01-01 ~ 2021-08-31 的訂單
 print(order.order_data(fromdate='2021-06-01', enddate='2021-08-31'))
@@ -35,7 +35,7 @@ print(order.order_data(fromdate='2021-06-01', enddate='2021-08-31', keywords='te
 
 ## bugfix
 
-- cookie 設定，分店采用 hid=xxx，所以不論那個賬號，只要可以登入都可以透過修改 hid 的方法去取得非自己的分店訂單資料
+- ~~cookie 設定，分店采用 hid=xxx，所以不論那個賬號，只要可以登入都可以透過修改 hid 的方法去取得非自己的分店訂單資料~~
 
 ## changelog
 - 2021-08-22 
