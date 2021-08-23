@@ -10,12 +10,12 @@ from bs4 import BeautifulSoup as bs
 
 class order:
 
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
+    def __init__(self, hid, cookiekey):
+        self.hid = hid
+        self.cookiekey = cookiekey
         self.headers = {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'Cookie': 'language=zh-tw; currency=NT%24; hid=7202; cookiekey=0',
+            'Cookie': 'language=zh-tw; currency=NT%24; hid=' + hid + '; cookiekey=' + cookiekey,
             'Host': 'www.360pms.com',
             'Referer': 'https://www.360pms.com/Order/allorder/',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73'
@@ -23,19 +23,10 @@ class order:
 
     def order_data(self, fromdate, enddate, keywords = ''):
         headers = self.headers
-
-        payload = {
-            'username': self.username,
-            'password': self.password
-        }
-
-        # login
-        session = requests.Session()
-        session.post('https://www.360pms.com/Login/index', data=payload, headers=headers)
-
-        # update cookie
-        headers['Cookie'] = 'language=zh-tw; currency=NT%24; hid=7202; cookiekey=5ca7cc0e6a43da9887282f2fd36b7c5d'
         headers['Referer'] = 'https://www.360pms.com/book/index.html'
+
+        session = requests.Session()
+
 
         # 參數
         url_query = f"?datetype=1&channel=allchannel&status=allstatus&fromdate={fromdate}&enddate={enddate}&keywords={keywords}"
@@ -44,7 +35,7 @@ class order:
         page_number = 1
 
         result = []
-        while page_number < 100:
+        while page_number > 0:
             response = session.get('https://www.360pms.com/Order/allorder' + url_query + f'&p={page_number}',
                                    headers=headers)
             soup = bs(response.text, 'html.parser')
@@ -94,5 +85,5 @@ class order:
         return result
 
 
-order = order('0922013171', 'Hezrid5')
+order = order(hid='3546', cookiekey='9777809faa558519127835b25a5e0505')
 print(order.order_data(fromdate='2021-01-01', enddate='2021-08-31'))
