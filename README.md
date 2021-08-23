@@ -38,6 +38,8 @@ print(order.order_data(fromdate='2021-06-01', enddate='2021-08-31', keywords='te
 - ~~cookie 設定，分店采用 hid=xxx，所以不論那個賬號，只要可以登入都可以透過修改 hid 的方法去取得非自己的分店訂單資料~~
 
 ## changelog
+- 2012-08-23
+  - hid 以及 cookiekey 兩者要互相搭配，如果只有 cookiekey 就預設以開立的 hid 為主
 - 2021-08-22 
   - 修改爬中間資料，有重覆的資料給拿掉
   - 增加 page 的分析
