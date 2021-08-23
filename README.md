@@ -21,7 +21,7 @@
 
 用 order class 建立起來
 ```
-# 直接使用 cookle 就可以進入使用了
+# 直接使用 cookie 就可以進入使用了
 order = order(hid='7202', cookiekey='5ca7cc0e6a43da9887282f2fd36b7c5d')
 
 # 呈現 2021-01-01 ~ 2021-08-31 的訂單
