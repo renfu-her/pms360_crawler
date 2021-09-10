@@ -1,2 +1,15 @@
+flask
+Flask-SQLAlchemy
+SQLAlchemy
+gunicorn
+greenlet
+Werkzeug
+Jinja2
+Werkzeug
+flask-script
+pymysql
+blueprint
+unicorn
+pytz
 requests
 BeautifulSoup4
