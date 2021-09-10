@@ -12,7 +12,7 @@
 - hotel_id = ['你的旅館的 hid']
 
 如何取得的方式，請參照下圖
-![](https://renfu-her.github.io/repo-images/website/360pms.png)
+![參照圖](https://renfu-her.github.io/repo-images/website/360pms.png)
 
 ## API 說明
 
