@@ -3,9 +3,16 @@
 雲掌櫃 https://www.360pms.com 底下沒有開放訂單、房間、旅館的名稱以及 hid 的 API
 參照基本的 order 去寫出來實際的爬蟲
 
-# SQL
+# SQL 以及登入的 cookie 寫進去
 
-請先跑一遍 
+初始值，請先跑一遍 pms360.sql
+
+修改 main.py
+- cookie_key = '你的 cookiekey'
+- hotel_id = ['你的旅館的 hid']
+
+如何取得的方式，請參照下圖
+![](https://renfu-her.github.io/repo-images/website/360pms.png)
 
 ## API 說明
 
