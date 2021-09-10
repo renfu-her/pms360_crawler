@@ -19,15 +19,20 @@
 旅館
 - curl -v -X GET http://localhost:5000/hotel
 
-訂單
-- curl -v -X GET http://localhost:5000/order
-
 房間 
 - curl -v -X GET http://localhost:5000/room
 
-有如何的問題，歡迎在 issue 裏面提出來
+訂單
+- curl -v -X GET http://localhost:5000/order
+  - 這裏只有本月 + 上一個月份的資料會撈進來
 
-- github: https://github.com/renfu-her/pms360_crawler
+## 獨立跑 order 的資料
+
+主要是它跑的時間可能約 1~6 分鐘不等的時間，所以獨立寫 order
+pms360_crawler.py
+
+- python pms360_crawler.py
+- 這個功能可以用 cron 定時去跑
 
 ## 取得 hid
 
@@ -51,3 +56,7 @@
 - 2021-08-22 
   - 修改爬中間資料，有重覆的資料給拿掉
   - 增加 page 的分析
+
+### 有如何的問題，歡迎在 issue 裏面提出來
+
+- github: https://github.com/renfu-her/pms360_crawler
