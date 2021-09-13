@@ -123,7 +123,7 @@ def space_get_all():
                 result = []
                 for idx in range(0, start_days):
                     step_days = (start_date + timedelta(days=idx)).strftime('%Y-%m-%d')
-                    result.append(Pms369Price(hotel_id=order.hotel_id, order_id=order.order_id,
+                    result.append(Pms369Price(hotel_id=hotel, order_id=order.order_id,
                                               to_day=step_days, price=price))
                     # print(order.order_id, start_days, price, step_days)
 
