@@ -17,14 +17,19 @@
 ## API 說明
 
 旅館
-- curl -v -X GET http://localhost:5000/hotel
+- curl -v -X GET http://localhost:5000/api/hotel
 
 房間 
-- curl -v -X GET http://localhost:5000/room
+- curl -v -X GET http://localhost:5000/api/room
 
 訂單
-- curl -v -X GET http://localhost:5000/order
+- curl -v -X GET http://localhost:5000/api/order
   - 這裏只有本月 + 上一個月份的資料會撈進來
+
+訂單 & 房間的呈現的 API
+- curl -v -X GET http://localhost:5000/api/space
+
+## 
 
 ## 獨立跑 order 的資料
 
@@ -49,6 +54,8 @@ pms360_crawler.py
 ## bugfix
 
 ## changelog
+- 2021-09-14
+  - 修改 api
 - 2021-09-10
   - 整個大改，基本是旅館、房間、訂單的資料的 API
 - 2012-08-23
@@ -59,4 +66,4 @@ pms360_crawler.py
 
 ### 有如何的問題，歡迎在 issue 裏面提出來
 
-- github: https://github.com/renfu-her/pms360_crawler
+- github: [pms360_crawler github](https://github.com/renfu-her/pms360_crawler)

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 9 月戰報</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:
+ collapse;table-layout:fixed;">
+
+    <tbody>
+    <tr id="r0">
+        <td rowspan="2" class="x21">
+            各館業績
+        </td>
+        <td colspan="5" class="x21">
+            台南1館
+        </td>
+        <td colspan="2" class="x21">
+            台南2館
+        </td>
+        <td class="x22" style="width: 15%">總計</td>
+    </tr>
+    <tr id="r1">
+        <td class="x22">二人房有窗</td>
+        <td class="x22">二人房無窗</td>
+        <td class="x22">三人房有窗</td>
+        <td class="x22">四人房有窗</td>
+        <td class="x22">四人房無窗</td>
+        <td class="x22">二人房有窗</td>
+        <td class="x22">四人房有窗</td>
+        <td class="x22"></td>
+    </tr>
+    <tr id="r2">
+        <td class="x22" >今日房間數</td>
+        <td class="x22" id="today-two-win-5226">0</td>
+        <td class="x22" id="today-two-no-win-5226">0</td>
+        <td class="x22" id="today-three-win-5226">0</td>
+        <td class="x22" id="today-four-win-5226">0</td>
+        <td class="x22" id="today-four-no-win-5226">0</td>
+        <td class="x22" id="today-two-win-5263">0</td>
+        <td class="x22" id="today-four-win-5263">0</td>
+        <td class="x22" id="today-summary">0</td>
+    </tr>
+    <tr id="r4">
+        <td class="x22" >今日空房數</td>
+        <td class="x22" id="today-two-win-empty-5226">0</td>
+        <td class="x22" id="today-two-no-win-empty-5226">0</td>
+        <td class="x22" id="today-three-win-empty-5226">0</td>
+        <td class="x22" id="today-four-win-empty-5226">0</td>
+        <td class="x22" id="today-four-no-win-empty-5226">0</td>
+        <td class="x22" id="today-two-win-empty-5263">0</td>
+        <td class="x22" id="today-four-win-empty-5263">0</td>
+        <td class="x22" id="today-summary-empty">0</td>
+    </tr>
+    <tr id="r5">
+        <td class="x22" >本月已入住訂單</td>
+        <td class="x22" id="month-two-win-5226">0</td>
+        <td class="x22" id="month-two-no-win-5226">0</td>
+        <td class="x22" id="month-three-win-5226">0</td>
+        <td class="x22" id="month-four-win-5226">0</td>
+        <td class="x22" id="month-four-no-win-5226">0</td>
+        <td class="x22" id="month-two-win-5263">0</td>
+        <td class="x22" id="month-four-win-5263">0</td>
+        <td class="x22" id="month-summary">0</td>
+    </tr>
+    <tr id="r6">
+        <td class="x22" >本月已預訂訂單</td>
+        <td class="x22" id="month-two-win-booking-5226">0</td>
+        <td class="x22" id="month-two-no-win-booking-5226">0</td>
+        <td class="x22" id="month-three-win-booking-5226">0</td>
+        <td class="x22" id="month-four-win-booking-5226">0</td>
+        <td class="x22" id="month-four-no-win-booking-5226">0</td>
+        <td class="x22" id="month-two-win-booking-5263">0</td>
+        <td class="x22" id="month-four-win-booking-5263">0</td>
+        <td class="x22" id="month-summary-booking">0</td>
+    </tr>
+    <tr id="r7">
+        <td class="x22">本月預收款退款</td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+    </tr>
+
+    <tr id="r9">
+        <td class="x22" colspan="9">訂單來源</td>
+    </tr>
+    <tr id="LINE">
+        <td class="x22" >LINE</td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="FB">
+        <td class="x22" >FB</td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="IG">
+        <td class="x22" >IG</td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="AsiaYo">
+        <td class="x22" >ASIA YO</td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+    </tr>
+    <tr id="Agoda">
+        <td class="x22" >Agoda</td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="Booking">
+        <td class="x22" >Booking</td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="Airbnb">
+        <td class="x22" >Airbnb</td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="XieCheng">
+        <td class="x22" >攜程</td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="MrHost">
+        <td class="x22" >MrHost</td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="ZhonGjie">
+        <td class="x22" >仲介</td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="Agency">
+        <td class="x22" >旅行社</td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="Group">
+        <td class="x22" >團體專案</td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+    </tr>
+    <tr id="Summary">
+        <td class="x22" >總計</td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22"></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+        <td class="x22" ></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(function(){
+
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        let yyyy = today.getFullYear();
+        let to_day = yyyy + '-' + mm + '-' + dd
+
+        // 已經入住
+        let month_two_win_5226 = 0.0
+        let month_two_no_win_5226 = 0.0
+        let month_three_win_5226 = 0.0
+        let month_four_win_5226 = 0.0
+        let month_four_no_win_5226 = 0.0
+        let month_two_win_5263 = 0.0
+        let month_four_win_5263 = 0.0
+        let month_summary = 0.0
+        // 已經預訂
+        let month_two_win_booking_5226 = 0.0
+        let month_two_no_win_booking_5226 = 0.0
+        let month_three_win_booking_5226 = 0.0
+        let month_four_win_booking_5226 = 0.0
+        let month_four_no_win_booking_5226 = 0.0
+        let month_two_win_booking_5263 = 0.0
+        let month_four_win_booking_5263 = 0.0
+        let month_summary_booking = 0.0
+
+        // 房間數量
+        let today_two_win_5226 = 0
+        let today_two_no_win_5226 = 0
+        let today_three_win_5226 = 0
+        let today_four_win_5226 = 0
+        let today_four_no_win_5226 = 0
+        let today_two_win_5263 = 0
+        let today_four_win_5263 = 0
+
+        let room_id = []
+        // 金額區分
+        let LINE    = [0, 0, 0, 0, 0, 0, 0, 0]
+        let FB      = [0, 0, 0, 0, 0, 0, 0, 0]
+        let IG      = [0, 0, 0, 0, 0, 0, 0, 0]
+        let AsiaYo  = [0, 0, 0, 0, 0, 0, 0, 0]
+        let Agoda   = [0, 0, 0, 0, 0, 0, 0, 0]
+        let Booking = [0, 0, 0, 0, 0, 0, 0, 0]
+        let Airbnb  = [0, 0, 0, 0, 0, 0, 0, 0]
+        let XieCheng = [0, 0, 0, 0, 0, 0, 0, 0] // 攜程
+        let MrHost   = [0, 0, 0, 0, 0, 0, 0, 0]
+        let ZhonGjie = [0, 0, 0, 0, 0, 0, 0, 0]
+        let Agency   = [0, 0, 0, 0, 0, 0, 0, 0]
+        let Group    = [0, 0, 0, 0, 0, 0, 0, 0]
+
+        $.get('/api/space', function(result){
+            for (let i = 0; i < result.data.length; i++) {
+                const item = result.data[i];
+                // console.log(i, item);
+                let order_id = item.order_id;
+                let hotel_id = item.hotel_id;
+                let room_name = item.room_name;
+                let price = item.price
+                let status = item.status;
+                let ToDay = item.to_day
+                let channel_name = item.channel_name;
+                // console.log(ToDay)
+                // 訂單來源, 一館：5225，二館：5263
+                // 5225 二人房有窗 - 雙人房(天井窗), 雙人房(對外窗) / 26
+                //      二人房無窗 - 雙人房(無窗) / 17
+                //      三人房有窗 - 三人房(對外窗) / 1
+                //      四人房有窗 - 四人房(對外窗), VVIP四人房(天井窗) / 4
+                //      四人房無窗 - 四人房(無窗), VIP四人房(無窗)	 / 12
+                // 5263 二人房有窗 - 雙人房(天井窗無電梯)，雙人房(對外窗無電梯) / 10
+                //      四人房有窗 - 四人房(天井窗無電梯)，四人房(對外窗無電梯) / 6
+
+                room_id[order_id] = 0
+                if(hotel_id == "5225"){
+                    if(room_name == '雙人房(天井窗)' || room_name == '雙人房(對外窗)'){
+                        room_id[order_id] = room_id[order_id] + 1
+                        if(to_day == ToDay && room_id[order_id] == 1){
+                            today_two_win_5226 += 1
+                        }
+                        if(status == 2){
+                            month_two_win_booking_5226 += price
+                        } else {
+                            month_two_win_5226 += price
+                        }
+                    }
+
+                    if(room_name == '雙人房(無窗)'){
+                        room_id[order_id] += 1
+                        if(to_day == ToDay && room_id[order_id] == 1){
+                            today_two_no_win_5226 += 1
+                        }
+                        if(status == 2){
+                            month_two_no_win_booking_5226 += price
+                        } else {
+                            month_two_no_win_5226 += price
+                        }
+                    }
+
+                    if(room_name == '三人房(對外窗)'){
+                        room_id[order_id] += 1
+                        if(to_day == ToDay && room_id[order_id] == 1){
+                            today_three_win_5226 += 1
+                        }
+                        if(status == 2){
+                            month_three_win_booking_5226 += price
+                        } else {
+                            month_three_win_5226 += price
+                        }
+                    }
+
+                    if(room_name == '四人房(對外窗)' || room_name == 'VVIP四人房(天井窗)'){
+                        room_id[order_id] += 1
+                        if(to_day == ToDay && room_id[order_id] == 1){
+                            today_four_win_5226 += 1
+                        }
+                        if(status == 2){
+                            month_four_win_booking_5226 += price
+                        } else {
+                            month_four_win_5226 += price
+                        }
+                    }
+
+                    if(room_name == '四人房(無窗)' || room_name == 'VIP四人房(無窗)'){
+                        room_id[order_id] += 1
+                        if(to_day == ToDay && room_id[order_id] == 1){
+                            today_four_no_win_5226 += 1
+                        }
+                        if(status == 2){
+                            month_four_no_win_booking_5226 += price
+                        } else {
+                            month_four_no_win_5226 += price
+                        }
+                    }
+                }
+
+                if (hotel_id == '5263'){
+                    if (room_name == '雙人房(天井窗無電梯)' || room_name == '雙人房(對外窗無電梯)'){
+                        room_id[order_id] += 1
+                        if(to_day == ToDay && room_id[order_id] == 1){
+                            today_two_win_5263 += 1
+                        }
+                        if(status == 2){
+                            month_two_win_booking_5226 += price
+                        } else {
+                            month_two_win_5263 += price
+                        }
+                    }
+
+                    if(room_name == '四人房(天井窗無電梯)' || room_name == '四人房(對外窗無電梯)'){
+                        room_id[order_id] += 1
+                        if(to_day == ToDay && room_id[order_id] == 1){
+                            today_four_win_5263 += 1
+                        }
+                        if(status == 2){
+                            month_four_win_booking_5263 += price
+                        } else {
+                            month_four_win_5263 += price
+                        }
+                    }
+                }
+
+                // 寫入前端
+                $('#month-two-win-5226').html(month_two_win_5226.toFixed(2))
+                $('#month-two-no-win-5226').html(month_two_no_win_5226.toFixed(2))
+                $('#month-three-win-5226').html(month_three_win_5226.toFixed(2))
+                $('#month-four-win-5226').html(month_four_win_5226.toFixed(2))
+                $('#month-four-no-win-5226').html(month_four_no_win_5226.toFixed(2))
+                $('#month-two-win-5263').html(month_two_win_5263.toFixed(2))
+                $('#month-four-win-5263').html(month_four_win_5263.toFixed(2))
+                summary = month_two_win_5226 + month_two_no_win_5226 + month_three_win_5226 +
+                          month_four_win_5226 +month_four_no_win_5226 + month_two_win_5263 +
+                          month_four_win_5263
+                summary = summary.toFixed(2)
+                $('#month-summary').html(summary)
+
+                // 已經預訂
+                $('#month-two-win-booking-5226').html(month_two_win_booking_5226.toFixed(2))
+                $('#month-two-no-win-booking-5226').html(month_two_no_win_booking_5226.toFixed(2))
+                $('#month-three-win-booking-5226').html(month_three_win_booking_5226.toFixed(2))
+                $('#month-four-win-booking-5226').html(month_four_win_booking_5226.toFixed(2))
+                $('#month-four-no-win-booking-5226').html(month_four_no_win_booking_5226.toFixed(2))
+                $('#month-two-win-booking-5263').html(month_two_win_booking_5263.toFixed(2))
+                $('#month-four-win-booking-5263').html(month_four_win_booking_5263.toFixed(2))
+                summary_booking = month_two_win_booking_5226 + month_two_no_win_booking_5226 +
+                                  month_three_win_booking_5226 + month_four_win_booking_5226 +
+                                  month_four_no_win_booking_5226 + month_two_win_booking_5263 +
+                                  month_four_win_booking_5263
+                summary_booking = summary_booking.toFixed(2)
+                $('#month-summary-booking').html(summary_booking)
+
+                // 計算房間數量
+                $('#today-two-win-5226').html(today_two_win_5226)
+                $('#today-two-no-win-5226').html(today_two_no_win_5226)
+                $('#today-three-win-5226').html(today_three_win_5226)
+                $('#today-four-win-5226').html(today_four_win_5226)
+                $('#today-four-no-win-5226').html(today_four_no_win_5226)
+                $('#today-two-win-5263').html(today_two_win_5263)
+                $('#today-four-win-5263').html(today_four_win_5263)
+
+                $('#today-two-win-empty-5226').html(26 - today_two_win_5226)
+                $('#today-two-no-win-empty-5226').html(17 - today_two_no_win_5226)
+                $('#today-three-win-empty-5226').html(1 - today_three_win_5226)
+                $('#today-four-win-empty-5226').html(4 - today_four_win_5226)
+                $('#today-four-no-win-empty-5226').html(12 - today_four_no_win_5226)
+                $('#today-two-win-empty-5263').html(10 - today_two_win_5263)
+                $('#today-four-win-empty-5263').html(6 - today_four_win_5263)
+
+                let usage_room = today_two_win_5226 + today_two_no_win_5226 + today_three_win_5226 +
+                                 today_four_win_5226 + today_four_no_win_5226 + today_two_win_5263 +
+                                 today_four_win_5263
+
+                $('#today-summary').html(usage_room)
+                $('#today-summary-empty').html(76 - usage_room)
+
+                // 以訂單來源區分金額
+                if(hotel_id == "5225"){
+                    if(room_name == '雙人房(天井窗)' || room_name == '雙人房(對外窗)'){
+                        if(channel_name == 'LINE'){
+                            LINE[0] += price
+                        }
+                        if(channel_name == 'FB'){
+                            FB[0] += price
+                        }
+                        if(channel_name == 'IG'){
+                            IG[0] += price
+                        }
+                        if(channel_name == 'AsiaYo'){
+                            AsiaYo[0] += price
+                        }
+                        if(channel_name == 'Agoda'){
+                            Agoda[0] += price
+                        }
+                        if(channel_name == 'Booking'){
+                            Booking[0] += price
+                        }
+                        if(channel_name == 'Airbnb'){
+                            Airbnb[0] += price
+                        }
+                        if(channel_name == '攜程'){
+                            XieCheng[0] += price
+                        }
+                        if(channel_name == 'MrHost'){
+                            MrHost[0] += price
+                        }
+                        if(channel_name == '仲介'){
+                            ZhonGjie[0] += price
+                        }
+                        if(channel_name == '旅行社'){
+                            Agency[0] += price
+                        }
+                        if(channel_name == '團體專案'){
+                            Group[0] += price
+                        }
+                    }
+
+                    if(room_name == '雙人房(無窗)'){
+                        if(channel_name == 'LINE'){
+                            LINE[1] += price
+                        }
+                        if(channel_name == 'FB'){
+                            FB[1] += price
+                        }
+                        if(channel_name == 'IG'){
+                            IG[1] += price
+                        }
+                        if(channel_name == 'AsiaYo'){
+                            AsiaYo[1] += price
+                        }
+                        if(channel_name == 'Agoda'){
+                            Agoda[1] += price
+                        }
+                        if(channel_name == 'Booking'){
+                            Booking[1] += price
+                        }
+                        if(channel_name == 'Airbnb'){
+                            Airbnb[1] += price
+                        }
+                        if(channel_name == '攜程'){
+                            XieCheng[1] += price
+                        }
+                        if(channel_name == 'MrHost'){
+                            MrHost[1] += price
+                        }
+                        if(channel_name == '仲介'){
+                            ZhonGjie[1] += price
+                        }
+                        if(channel_name == '旅行社'){
+                            Agency[1] += price
+                        }
+                        if(channel_name == '團體專案'){
+                            Group[1] += price
+                        }
+                    }
+
+                    if(room_name == '三人房(對外窗)'){
+                        if(channel_name == 'LINE'){
+                            LINE[2] += price
+                        }
+                        if(channel_name == 'FB'){
+                            FB[2] += price
+                        }
+                        if(channel_name == 'IG'){
+                            IG[2] += price
+                        }
+                        if(channel_name == 'AsiaYo'){
+                            AsiaYo[2] += price
+                        }
+                        if(channel_name == 'Agoda'){
+                            Agoda[2] += price
+                        }
+                        if(channel_name == 'Booking'){
+                            Booking[2] += price
+                        }
+                        if(channel_name == 'Airbnb'){
+                            Airbnb[2] += price
+                        }
+                        if(channel_name == '攜程'){
+                            XieCheng[2] += price
+                        }
+                        if(channel_name == 'MrHost'){
+                            MrHost[2] += price
+                        }
+                        if(channel_name == '仲介'){
+                            ZhonGjie[2] += price
+                        }
+                        if(channel_name == '旅行社'){
+                            Agency[2] += price
+                        }
+                        if(channel_name == '團體專案'){
+                            Group[2] += price
+                        }
+                    }
+
+                    if(room_name == '四人房(對外窗)' || room_name == 'VVIP四人房(天井窗)'){
+                        if(channel_name == 'LINE'){
+                            LINE[3] += price
+                        }
+                        if(channel_name == 'FB'){
+                            FB[3] += price
+                        }
+                        if(channel_name == 'IG'){
+                            IG[3] += price
+                        }
+                        if(channel_name == 'AsiaYo'){
+                            AsiaYo[3] += price
+                        }
+                        if(channel_name == 'Agoda'){
+                            Agoda[3] += price
+                        }
+                        if(channel_name == 'Booking'){
+                            Booking[3] += price
+                        }
+                        if(channel_name == 'Airbnb'){
+                            Airbnb[3] += price
+                        }
+                        if(channel_name == '攜程'){
+                            XieCheng[3] += price
+                        }
+                        if(channel_name == 'MrHost'){
+                            MrHost[3] += price
+                        }
+                        if(channel_name == '仲介'){
+                            ZhonGjie[3] += price
+                        }
+                        if(channel_name == '旅行社'){
+                            Agency[3] += price
+                        }
+                        if(channel_name == '團體專案'){
+                            Group[3] += price
+                        }
+                    }
+
+                    if(room_name == '四人房(無窗)' || room_name == 'VIP四人房(無窗)'){
+                        if(channel_name == 'LINE'){
+                            LINE[4] += price
+                        }
+                        if(channel_name == 'FB'){
+                            FB[4] += price
+                        }
+                        if(channel_name == 'IG'){
+                            IG[4] += price
+                        }
+                        if(channel_name == 'AsiaYo'){
+                            AsiaYo[4] += price
+                        }
+                        if(channel_name == 'Agoda'){
+                            Agoda[4] += price
+                        }
+                        if(channel_name == 'Booking'){
+                            Booking[4] += price
+                        }
+                        if(channel_name == 'Airbnb'){
+                            Airbnb[4] += price
+                        }
+                        if(channel_name == '攜程'){
+                            XieCheng[4] += price
+                        }
+                        if(channel_name == 'MrHost'){
+                            MrHost[4] += price
+                        }
+                        if(channel_name == '仲介'){
+                            ZhonGjie[4] += price
+                        }
+                        if(channel_name == '旅行社'){
+                            Agency[4] += price
+                        }
+                        if(channel_name == '團體專案'){
+                            Group[4] += price
+                        }
+                    }
+                }
+
+                if (hotel_id == '5263'){
+                    if (room_name == '雙人房(天井窗無電梯)' || room_name == '雙人房(對外窗無電梯)'){
+                        if(channel_name == 'LINE'){
+                            LINE[5] += price
+                        }
+                        if(channel_name == 'FB'){
+                            FB[5] += price
+                        }
+                        if(channel_name == 'IG'){
+                            IG[5] += price
+                        }
+                        if(channel_name == 'AsiaYo'){
+                            AsiaYo[5] += price
+                        }
+                        if(channel_name == 'Agoda'){
+                            Agoda[5] += price
+                        }
+                        if(channel_name == 'Booking'){
+                            Booking[5] += price
+                        }
+                        if(channel_name == 'Airbnb'){
+                            Airbnb[5] += price
+                        }
+                        if(channel_name == '攜程'){
+                            XieCheng[5] += price
+                        }
+                        if(channel_name == 'MrHost'){
+                            MrHost[5] += price
+                        }
+                        if(channel_name == '仲介'){
+                            ZhonGjie[5] += price
+                        }
+                        if(channel_name == '旅行社'){
+                            Agency[5] += price
+                        }
+                        if(channel_name == '團體專案'){
+                            Group[5] += price
+                        }
+                    }
+
+                    if(room_name == '四人房(天井窗無電梯)' || room_name == '四人房(對外窗無電梯)'){
+                        if(channel_name == 'LINE'){
+                            LINE[6] += price
+                        }
+                        if(channel_name == 'FB'){
+                            FB[6] += price
+                        }
+                        if(channel_name == 'IG'){
+                            IG[6] += price
+                        }
+                        if(channel_name == 'AsiaYo'){
+                            AsiaYo[6] += price
+                        }
+                        if(channel_name == 'Agoda'){
+                            Agoda[6] += price
+                        }
+                        if(channel_name == 'Booking'){
+                            Booking[6] += price
+                        }
+                        if(channel_name == 'Airbnb'){
+                            Airbnb[6] += price
+                        }
+                        if(channel_name == '攜程'){
+                            XieCheng[6] += price
+                        }
+                        if(channel_name == 'MrHost'){
+                            MrHost[6] += price
+                        }
+                        if(channel_name == '仲介'){
+                            ZhonGjie[6] += price
+                        }
+                        if(channel_name == '旅行社'){
+                            Agency[6] += price
+                        }
+                        if(channel_name == '團體專案'){
+                            Group[6] += price
+                        }
+                    }
+                }
+
+                // 所有的訂單來源
+                for(let i=0; i < 7; i++){
+                    $('#LINE td:nth-child(' + (i + 2) +')').html(LINE[i])
+                    $('#FB td:nth-child(' + (i + 2) +')').html(FB[i])
+                    $('#IG td:nth-child(' + (i + 2) +')').html(IG[i])
+                    $('#AsiaYo td:nth-child(' + (i + 2) +')').html(AsiaYo[i])
+                    $('#Agoda td:nth-child(' + (i + 2) +')').html(Agoda[i])
+                    $('#Booking td:nth-child(' + (i + 2) +')').html(Booking[i])
+                    $('#Airbnb td:nth-child(' + (i + 2) +')').html(Airbnb[i])
+                    $('#XieCheng td:nth-child(' + (i + 2) +')').html(XieCheng[i])
+                    $('#MrHost td:nth-child(' + (i + 2) +')').html(MrHost[i])
+                    $('#ZhonGjie td:nth-child(' + (i + 2) +')').html(ZhonGjie[i])
+                    $('#Agency td:nth-child(' + (i + 2) +')').html(Agency[i])
+                    $('#Group td:nth-child(' + (i + 2) +')').html(Group[i])
+
+                    $('#Summary td:nth-child(' + ( i + 2)+ ')').html(LINE[i] + FB[i] + IG[i] + AsiaYo[i] +
+                                                   Agoda[i] + Booking[i] + Airbnb[i] +
+                                                   XieCheng[i] + MrHost[i] + ZhonGjie[i] +
+                                                   Agency[i] + Group[i]
+                                                  )
+                }
+
+                // 所有的訂單來源
+                let LINE_TotaL = LINE[0] + LINE[1] + LINE[2] + LINE[3] + LINE[4] + LINE[5] + LINE[6]
+                let FB_Total = FB[0] + FB[1] + FB[2] + FB[3] + FB[4] + FB[5] + FB[6]
+                let IG_Total = IG[0] + IG[1] + IG[2] + IG[3] + IG[4] + IG[5] + IG[6]
+                let AsiaYo_Total = AsiaYo[0] + AsiaYo[1] + AsiaYo[2] + AsiaYo[3] + AsiaYo[4] + AsiaYo[5] + AsiaYo[6]
+                let Agoda_Total = Agoda[0] + Agoda[1] + Agoda[2] + Agoda[3] + Agoda[4] + Agoda[5] + Agoda[6]
+                let Booking_Total = Booking[0] + Booking[1] + Booking[2] + Booking[3] + Booking[4] + Booking[5] + Booking[6]
+                let Airbnb_Total = Airbnb[0] + Airbnb[1] + Airbnb[2] + Airbnb[3] + Airbnb[4] + Airbnb[5] + Airbnb[6]
+                let XieCheng_Total = XieCheng[0] + XieCheng[1] + XieCheng[2] + XieCheng[3] + XieCheng[4] + XieCheng[5] + XieCheng[6]
+                let MrHost_Total = MrHost[0] + MrHost[1] + MrHost[2] + MrHost[3] + MrHost[4] + MrHost[5] + MrHost[6]
+                let ZhonGjie_Total = ZhonGjie[0] + ZhonGjie[1] + ZhonGjie[2] + ZhonGjie[3] + ZhonGjie[4] + ZhonGjie[5] + ZhonGjie[6]
+                let Agency_Total = Agency[0] + Agency[1] + Agency[2] + Agency[3] + Agency[4] + Agency[5] + Agency[6]
+                let Group_Total = Group[0] + Group[1] + Group[2] + Group[3] + Group[4] + Group[5] + Group[6]
+
+                $('#LINE td:nth-child(9)').html(LINE_TotaL)
+                $('#FB td:nth-child(9)').html(FB_Total)
+                $('#IG td:nth-child(9)').html(IG_Total)
+                $('#AsiaYo td:nth-child(9)').html(AsiaYo_Total)
+                $('#Agoda td:nth-child(9)').html(Agoda_Total)
+                $('#Booking td:nth-child(9)').html(Booking_Total)
+                $('#Airbnb td:nth-child(9)').html(Airbnb_Total)
+                $('#XieCheng td:nth-child(9)').html(XieCheng_Total)
+                $('#MrHost td:nth-child(9)').html(MrHost_Total)
+                $('#ZhonGjie td:nth-child(9)').html(ZhonGjie_Total)
+                $('#Agency td:nth-child(9)').html(Agency_Total)
+                $('#Group td:nth-child(9)').html(Group_Total)
+
+                $('#Summary td:nth-child(9)').html(LINE_TotaL + FB_Total + IG_Total + AsiaYo_Total +
+                                                   Agoda_Total + Booking_Total + Airbnb_Total +
+                                                   XieCheng_Total + MrHost_Total + ZhonGjie_Total +
+                                                   Agency_Total + Group_Total
+                                                  )
+
+            }
+        })
+    })
+</script>
+
+<style>
+    table {
+        border: 1px solid #000;
+        border-collapse: collapse;
+    }
+
+    tr, td {
+        border: 1px solid #000;
+    }
+</style>
